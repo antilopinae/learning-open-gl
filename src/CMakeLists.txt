@@ -1,12 +1,18 @@
 add_library(sut STATIC run.cpp)
 target_include_directories(sut PUBLIC .)
 
-target_link_libraries(sut PRIVATE glfw)
+target_link_libraries(sut PRIVATE glfw glad)
+
+target_include_directories(sut
+	PUBLIC ../modules/glfw-3.4/include
+	PUBLIC ../modules/glad/include
+)
+
+find_package(OpenGL REQUIRED)
+target_link_libraries(sut PRIVATE OpenGL::GL)
 
 add_executable(bootstrap bootstrap.cpp)
 target_link_libraries(bootstrap PRIVATE sut)
-
-target_include_directories(sut PUBLIC ../modules/glfw-3.4/include)
 
 if(CMAKE_BUILD_TYPE STREQUAL Debug)
 	target_compile_options(sut PRIVATE --coverage)
