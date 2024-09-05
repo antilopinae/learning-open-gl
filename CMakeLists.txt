@@ -21,6 +21,7 @@ add_subdirectory(src bin)
 add_subdirectory(modules)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake")
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/shaders")
 # configure_file(.clang-format .clang-format COPYONLY)
 
 #add_subdirectory(test)

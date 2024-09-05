@@ -1,4 +1,4 @@
-add_library(sut STATIC run.cpp)
+add_library(sut STATIC run.cpp triangle_mesh.cpp)
 target_include_directories(sut PUBLIC .)
 
 target_link_libraries(sut PRIVATE glfw glad)
@@ -13,6 +13,7 @@ target_link_libraries(sut PRIVATE OpenGL::GL)
 
 add_executable(bootstrap bootstrap.cpp)
 target_link_libraries(bootstrap PRIVATE sut)
+
 
 if(CMAKE_BUILD_TYPE STREQUAL Debug)
 	target_compile_options(sut PRIVATE --coverage)
